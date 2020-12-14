@@ -6,8 +6,8 @@ def parts(lines):
     result = 0
     ids = []
 
-    for l in lines.splitlines():
-        rows, columns = l[:7], l[7:]
+    for line in lines.splitlines():
+        rows, columns = line[:7], line[7:]
 
         r = (0, 127)
         for i in rows:
@@ -26,8 +26,7 @@ def parts(lines):
         result = max(result, r[0]*8 + c[0])
         ids.append(r[0]*8+c[0])
 
-    print([x for x in range(min(ids),max(ids)) if x not in ids])
-    return result
+    return (result, [x for x in range(min(ids), max(ids)) if x not in ids][0])
 
 
 lines = sys.stdin.read()
